@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main">
+        <aside class="graph-controls" id="graph-controls">
+            <div class="node-actions">
+                <button type="button" id="show-create-edge-form">Create Node</button>
+                <button type="button" id="show-edit-edge-form">Edit Node</button>
+            </div>
+            <form id="create-edge-form">
+                <label for="source">Source Node</label>
+                <input type="text" id="source" placeholder="Enter source name" maxlength="12" required>
+                <label for="destination">Destination Node</label>
+                <input type="text" id="destination" placeholder="Enter destination name" maxlength="12" required>
+                <label for="cost">Cost</label>
+                <input type="number" id="cost" placeholder="> 0" min="1" required>
+                <div class="node-axes-inputs">
+                    <div>
+                        <label for="x-axis">x-axis</label>
+                        <input 
+                            type="number" 
+                            inputmode="numeric" 
+                            name="x-axis" 
+                            class="x-axis" 
+                            id="x-axis" 
+                            placeholder="0-850"
+                            min="0"
+                            max="850"
+                            required
+                        >
+                    </div>
+                    <div>
+                        <label for="y-axis">y-axis</label>
+                        <input 
+                            type="number" 
+                            inputmode="numeric" 
+                            name="y-axis" 
+                            class="y-axis" 
+                            id="y-axis" 
+                            placeholder="0-690" 
+                            min="0"
+                            max="720"
+                            required
+                        >
+                    </div>
+                </div>
+                <button type="submit" id="create-edge-btn">Create Node</button>
+            </form>
+            <form id="edit-edge-form">
+                <label for="source">Select Source Node</label>
+                <select name="source-node" id="source-node"></select>
+                <label for="source">Source Name</label>
+                <input type="text" id="upd-source" placeholder="Update source name" required>
+                <div class="node-axes-inputs">
+                    <div>
+                        <label for="x-axis">x-axis</label>
+                        <input 
+                            type="number" 
+                            inputmode="numeric" 
+                            name="x-axis" 
+                            class="x-axis" 
+                            id="upd-x-axis" 
+                            placeholder="0-850"
+                            min="0"
+                            max="850"
+                            required
+                        >
+                    </div>
+                    <div>
+                        <label for="y-axis">y-axis</label>
+                        <input 
+                            type="number" 
+                            inputmode="numeric" 
+                            name="y-axis" 
+                            class="y-axis" 
+                            id="upd-y-axis" 
+                            placeholder="0-690"
+                            min="0"
+                            max="720"
+                            required
+                        >
+                    </div>
+                </div>
+                <button type="submit" id="edit-edge-btn">Update Node</button>
+            </form>
+            <h2>Select Algorithm</h2>
+            <form id="traversing-graph">
+                <select name="algorithm-selection" id="algorithm">
+                    <option value="BFS" selected>Bredth-First Search (BFS)</option>
+                    <option value="DFS">Depth-First Search (DFS)</option>
+                    <option value="UCS">Uniform-Cost Search (UCS)</option>
+                </select>
+                <select name="start" id="starting-node"></select>
+                <select name="goal" id="goal-node"></select>
+                <button type="button" id="start-traversing-btn">Start Traversing</button>
+            </form>
+            <button type="button" id="reset-graph-btn">Reset Everything</button>
+        </aside>
+        <main class="graph-map">
+            <canvas id="graph-canva" height="720" width="850"></canvas>
+        </main>
+        <aside class="display-path">
+            <h2>Path</h2>
+            <ul id="priority-queue"></ul>
+        </aside>
+    </div>
+
+    <script type="module" src="backend-script.js"></script>
+</body>
+</html>
